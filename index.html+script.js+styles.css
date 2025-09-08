@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Part 1: Event Handling</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>JavaScript Event Handling</h1>
+
+  <button id="messageBtn">Click Me</button>
+  <p id="message" class="hidden">Hello! You clicked the button 🎉</p>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+#script.js
+// Dark Mode
+document.getElementById("toggleMode").addEventListener("click", () => {
+  document.body.classList.toggle("dark-mode");
+});
+
+// Counter
+let count = 0;
+document.getElementById("increase").addEventListener("click", () => {
+  count++;
+  document.getElementById("counter").textContent = count;
+});
+document.getElementById("reset").addEventListener("click", () => {
+  count = 0;
+  document.getElementById("counter").textContent = count;
+});
+
+// FAQ Toggle
+document.getElementById("faqBtn").addEventListener("click", () => {
+  document.getElementById("faqAnswer").classList.toggle("hidden");
+});
+
+// Tabs
+const tabs = document.querySelectorAll(".tab");
+tabs.forEach(tab => {
+  tab.addEventListener("click", () => {
+    document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+    document.querySelectorAll(".tab-content").forEach(c => c.classList.add("hidden"));
+    
+    tab.classList.add("active");
+    document.getElementById(tab.dataset.tab).classList.remove("hidden");
+  });
+});
+
+
+#styles.css
+body {
+  font-family: Arial, sans-serif;
+  background: #f9f9f9;
+  color: #222;
+  margin: 0;
+  padding: 2rem;
+}
+
+h1 {
+  color: #2c3e50;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 0;
+  background: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #2980b9;
+}
+
+.hidden {
+  display: none;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+}
+
+.success {
+  color: green;
+  font-size: 14px;
+}
